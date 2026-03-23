@@ -1,11 +1,11 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect
 from api.spotify import get_now_playing, is_configured
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Spotify API Running"
+    return redirect("/api/spotify")
 
 @app.route("/api/spotify")
 def spotify():
@@ -18,11 +18,5 @@ def spotify():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-from flask import redirect
-
-@app.route("/")
-def home():
-    return redirect("/api/spotify")
-    
 # WAJIB untuk Vercel
 handler = app
