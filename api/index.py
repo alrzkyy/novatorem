@@ -18,5 +18,3 @@ def spotify():
     except Exception as e:
         return jsonify({"error": str(e)})
 
-# WAJIB untuk Vercel
-handler = app
