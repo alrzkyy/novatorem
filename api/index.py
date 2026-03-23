@@ -18,5 +18,11 @@ def spotify():
     except Exception as e:
         return jsonify({"error": str(e)})
 
+from flask import redirect
+
+@app.route("/")
+def home():
+    return redirect("/api/spotify")
+    
 # WAJIB untuk Vercel
 handler = app
